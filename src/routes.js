@@ -3,12 +3,11 @@ const express = require('express');
 const routes = express.Router();
 
 const TweetController = require('./controllers/Tweetcontroller');
+const LikeController = require('./controllers/LikeController');
 
-routes.get('tweets', TweetController.index);
-routes.post('tweets', TweetController.index);
+routes.get('/tweets', TweetController.index);
+routes.post('/tweets', TweetController.store);
 
-routes.get('/', (req, res) => {
-  return res.send('Hello world!')
-});
+routes.post('/likes/:id', LikeController.store);
 
 module.exports = routes;
